@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samarth | Engineering Portfolio</title>
+<meta name="description" content="Mechanical and aerospace engineering portfolio — materials research, structural analysis, and data work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#about">Skip to content</a>
+
+<header class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <a class="wordmark" href="#top">SAMARTH</a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" id="navMenu" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Mechanical &amp; Aerospace Engineering</p>
+    <h1 class="hero-title">SAMARTH</h1>
+    <p class="hero-sub">Materials research, structural analysis, and the data behind both.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#projects">View projects</a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<main>
+
+  <section class="section" id="about">
+    <div class="wrap">
+      <p class="kicker">About</p>
+      <h2 class="section-title">About me</h2>
+      <div class="about-grid">
+        <div class="about-body">
+          <p>I'm an engineering student working across materials science, aerospace structures, and data analysis. Most of my work starts the same way: build the thing, instrument it, then find out how far the model was off.</p>
+          <p>Right now that means corrosion testing of magnesium&ndash;aluminum systems at the Weihs Lab, banner deployment and fuselage structures for Design Build Fly, fire-response modeling of wall assemblies, and analytics dashboards for small businesses.</p>
+          <p class="about-note">Replace this section with your own bio &mdash; it's the one block on the page written as a placeholder.</p>
+        </div>
+        <aside class="about-facts">
+          <dl>
+            <div><dt>Focus</dt><dd>Materials &amp; structures</dd></div>
+            <div><dt>Tools</dt><dd>ANSYS, MATLAB, SolidWorks, Python</dd></div>
+            <div><dt>Based in</dt><dd>Baltimore, MD</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint" id="projects">
+    <div class="wrap">
+      <p class="kicker">Projects</p>
+      <h2 class="section-title">Selected work</h2>
+
+      <div class="group">
+        <h3 class="group-title">Weihs Lab: Hopkins Extreme Materials</h3>
+        <div class="cards">
+
+          <a class="card" href="projects/mg-al-static-suspension.html">
+            <div class="card-media">
+              <img src="images/Capped_Bottles_Suspension.png" alt="Capped sample bottles suspended in solution inside a lab cabinet">
+            </div>
+            <div class="card-label"><span>Static Suspension of Mg-Al in Corrosion</span></div>
+          </a>
+
+          <a class="card" href="projects/mg-al-cnc-machining.html">
+            <div class="card-media">
+              <img src="images/Clamping_Mess.jpg" alt="Workpiece clamped in a CNC machining fixture">
+            </div>
+            <div class="card-label"><span>CNC Machining and Surface Treatment of Mg-Al</span></div>
+          </a>
+
+        </div>
+      </div>
+
+      <div class="group">
+        <h3 class="group-title">Design Build Fly</h3>
+        <div class="cards">
+
+          <a class="card" href="projects/dbf-banner-deploy.html">
+            <div class="card-media">
+              <img src="images/Banner_Flying_Closeup.png" alt="RC aircraft in flight towing a deployed banner">
+            </div>
+            <div class="card-label"><span>Banner Deploy and Release for 2025-26 AIAA Competition</span></div>
+          </a>
+
+          <a class="card" href="projects/dbf-fuselage-fea.html">
+            <div class="card-media">
+              <img src="images/Circular_Tube_FE.png" alt="ANSYS inverse reserve factor contour plot of a circular tube structure">
+            </div>
+            <div class="card-label"><span>Finite Element Analysis and Optimization of Fuselage Structure</span></div>
+          </a>
+
+        </div>
+      </div>
+
+      <div class="group">
+        <h3 class="group-title">Multi-Hazard Resilient Structures Lab</h3>
+        <div class="cards">
+
+          <a class="card" href="projects/thermal-wall-assemblies.html">
+            <div class="card-media">
+              <img src="images/Thermal_Analysis_Graph.png" alt="Temperature versus time curves for two nodes in a wall assembly">
+            </div>
+            <div class="card-label"><span>Thermal Analysis of Protected Wall Assemblies Under Fire</span></div>
+          </a>
+
+        </div>
+      </div>
+
+      <div class="group">
+        <h3 class="group-title">Data Analytics with Kamoky</h3>
+        <div class="cards">
+
+          <a class="card" href="projects/kamoky-analytics-dashboards.html">
+            <div class="card-media">
+              <img src="images/MATLAB_Dashboard_Kamoky.png" alt="MATLAB analytics dashboard showing topic distribution and viewer activity charts">
+            </div>
+            <div class="card-label"><span>Analytics Dashboards for Ethnic Businesses and Team</span></div>
+          </a>
+
+          <a class="card" href="projects/kamoky-click-tracking.html">
+            <div class="card-media card-media-empty">
+              <span class="placeholder-note">Image to come</span>
+            </div>
+            <div class="card-label"><span>Click Tracking on Kamoky Promotion Links</span></div>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="resume">
+    <div class="wrap">
+      <p class="kicker">Resume</p>
+      <h2 class="section-title">Resume</h2>
+      <p class="lede">Full history of coursework, research, and project work.</p>
+      <a class="btn btn-primary" href="Samarth_Resume.pdf">Download resume (PDF)</a>
+      <p class="fineprint">Add <code>Samarth_Resume.pdf</code> to the repository root to activate this link.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <p class="kicker kicker-light">Contact</p>
+    <h2 class="section-title section-title-light">Get in touch</h2>
+    <ul class="contact-list">
+      <li><span class="contact-key">Email</span><a href="mailto:your-email@jh.edu">your-email@jh.edu</a></li>
+      <li><span class="contact-key">GitHub</span><a href="https://github.com/SamSet546">github.com/SamSet546</a></li>
+      <li><span class="contact-key">LinkedIn</span><a href="#">Add your LinkedIn URL</a></li>
+    </ul>
+    <p class="copyright">&copy; 2026 Samarth</p>
+  </div>
+</footer>
+
+<a class="to-top" href="#top" id="toTop" aria-label="Back to top">&uarr;</a>
+
+<script src="js/main.js"></script>
+</body>
+</html>
