@@ -88,10 +88,11 @@ a { color: var(--blue-deep); }
 .wordmark {
   font-family: var(--display);
   font-weight: 800;
-  font-size: 19px;
-  letter-spacing: 0.16em;
+  font-size: 17px;
+  letter-spacing: 0.13em;
   color: var(--white);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .nav { display: flex; gap: 34px; }
@@ -157,8 +158,8 @@ a { color: var(--blue-deep); }
 .hero-title {
   font-family: var(--display);
   font-weight: 800;
-  font-size: clamp(52px, 11vw, 116px);
-  line-height: 0.94;
+  font-size: clamp(42px, 8.6vw, 94px);
+  line-height: 0.96;
   letter-spacing: 0.02em;
   margin: 0;
   color: var(--white);
@@ -319,6 +320,8 @@ a { color: var(--blue-deep); }
 }
 
 .card-media {
+  flex: 1 1 auto;
+  min-height: 0;
   aspect-ratio: 16 / 10;
   background: var(--tint);
   overflow: hidden;
