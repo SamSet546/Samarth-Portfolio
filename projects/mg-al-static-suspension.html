@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Static Suspension of Mg-Al in Corrosion | Samarth Sethi</title>
+<title>Static Suspension of Mg-Al in Corrosion Fluid | Samarth Sethi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -28,18 +28,140 @@
 <main class="detail">
   <div class="wrap">
     <a class="back-link" href="../index.html#projects">&larr; All projects</a>
-    <p class="detail-org">Weihs Lab: Hopkins Extreme Materials</p>
-    <h1 class="detail-title">Static Suspension of Mg-Al in Corrosion</h1>
-    <div class="detail-hero">
-      <img src="../images/Capped_Bottles_Suspension.png" alt="Capped sample bottles suspended in solution inside a lab cabinet">
+    <p class="detail-org">Weihs Lab: Hopkins Extreme Materials Institute</p>
+    <h1 class="detail-title">Static Suspension of Mg-Al in Corrosion Fluid</h1>
+
+    <div class="prose">
+      <p>The summer of 2026, I engaged in research that began that April, studying how the properties of Magnesium alloys change under both corrosion and cyclic loading (fatigue). The findings ultimately inform us on the biodegradable and tensile strength properties of Magnesium-made medical implants in conditions vastly similar to those of the human body, inspiring the 3-point bend fatigue setup (due to constant flexural joint movements), slightly alkaline corrosion pH (7.4&ndash;7.5), and chamber temperature of 37&nbsp;C (body temperature).</p>
+      <p>Halfway through the summer, I led a project to supplement the findings from the Magnesium corrosion-fatigue study, where we would compare the mass-loss corrosion rate of samples in the same corrosion fluid but without any applied loading.</p>
     </div>
 
-    <div class="detail-body">
-      <div class="empty-state">
-        <strong>Write-up in progress</strong>
-        This page is ready for the project description &mdash; background, approach, results, and any additional figures.
+    <h2 class="subhead">Corrosion vs. Corrosion-Fatigue</h2>
+
+    <div class="prose">
+      <p>In materials science, heat treatments are known to change the physical properties of metals like Magnesium, so we implemented three different heat treatments (150&nbsp;C, 10 hours; 450&nbsp;C, 24 hours; and 450&nbsp;C, 1 min) for the corrosion-fatigue study. These heat treatments needed to carry over for my corrosion-only study, meaning we needed to submerge about 12&ndash;15 samples at the same time for about the same duration as the fatigued samples. This is three groups of 4&ndash;5 samples.</p>
+    </div>
+
+    <figure class="graphic">
+      <svg viewBox="0 0 720 216" xmlns="http://www.w3.org/2000/svg" role="img"
+           aria-label="Three groups labelled A, B and C, each holding five bottles of corrosion fluid with one suspended sample per bottle.">
+        <defs>
+          <g id="bottle">
+            <rect x="9"  y="0"  width="14" height="9"  rx="2"   fill="#4F6BE0"/>
+            <rect x="11" y="9"  width="10" height="12"          fill="#DCE5FC" stroke="#4F6BE0" stroke-width="1.4"/>
+            <rect x="1"  y="21" width="30" height="78" rx="5"   fill="#FFFFFF" stroke="#4F6BE0" stroke-width="1.6"/>
+            <rect x="3.5" y="56" width="25" height="41" rx="4"  fill="#7B9CF5" opacity="0.42"/>
+            <rect x="14.5" y="30" width="3" height="34"         fill="#4F6BE0"/>
+            <rect x="12"  y="62" width="8"  height="7"  rx="1"  fill="#070B22"/>
+          </g>
+        </defs>
+
+        <!-- Group A -->
+        <rect x="6" y="30" width="224" height="150" rx="5" fill="#EDF2FE" stroke="#C9D6FA"/>
+        <text x="118" y="21" text-anchor="middle" fill="#070B22"
+              font-family="Archivo, sans-serif" font-size="19" font-weight="800" letter-spacing="3">A</text>
+        <use href="#bottle" x="20"  y="48"/><use href="#bottle" x="62"  y="48"/>
+        <use href="#bottle" x="104" y="48"/><use href="#bottle" x="146" y="48"/>
+        <use href="#bottle" x="188" y="48"/>
+
+        <!-- Group B -->
+        <rect x="248" y="30" width="224" height="150" rx="5" fill="#EDF2FE" stroke="#C9D6FA"/>
+        <text x="360" y="21" text-anchor="middle" fill="#070B22"
+              font-family="Archivo, sans-serif" font-size="19" font-weight="800" letter-spacing="3">B</text>
+        <use href="#bottle" x="262" y="48"/><use href="#bottle" x="304" y="48"/>
+        <use href="#bottle" x="346" y="48"/><use href="#bottle" x="388" y="48"/>
+        <use href="#bottle" x="430" y="48"/>
+
+        <!-- Group C -->
+        <rect x="490" y="30" width="224" height="150" rx="5" fill="#EDF2FE" stroke="#C9D6FA"/>
+        <text x="602" y="21" text-anchor="middle" fill="#070B22"
+              font-family="Archivo, sans-serif" font-size="19" font-weight="800" letter-spacing="3">C</text>
+        <use href="#bottle" x="504" y="48"/><use href="#bottle" x="546" y="48"/>
+        <use href="#bottle" x="588" y="48"/><use href="#bottle" x="630" y="48"/>
+        <use href="#bottle" x="672" y="48"/>
+
+        <text x="360" y="203" text-anchor="middle" fill="#565F80"
+              font-family="Inter, sans-serif" font-size="12.5">One heat treatment per group &#183; one suspended sample per bottle</text>
+      </svg>
+      <figcaption class="fig-cap">Three groups of five bottles, one per heat treatment, submerged simultaneously for the same duration as the fatigued samples.</figcaption>
+    </figure>
+
+    <div class="prose">
+      <p>These factors, in addition to limited fluid supply, constrained the size of bottles I was allotted for installing the corrosion fluid, further constraining the size of the samples. My PhD mentors normalize the ratio of sample surface area to fluid volume to 0.8 in order to prevent overestimating the corrosion rate. This meant for a fluid volume of about 130&nbsp;ml, an adequate surface area is around 100&nbsp;mm&sup2;. That required us to submerge samples of dimensions 5&times;5&times;2&nbsp;mm!</p>
+      <p>Now, we couldn't just drop the square samples in the bottle, since the surface that rests on the bottom of the bottle always corrodes messily. This influenced my very first design of a tiered clamping device that hooks around the bottle's top and is fastened mainly by M3 bolts and nuts.</p>
+    </div>
+
+    <div class="fig-row">
+      <div class="fig-row-imgs">
+        <div class="fig-frame"><img src="../images/static-suspension/v0-round.jpg" alt="CAD render of the version 0 clamping assembly suspended inside a round bottle"></div>
+        <div class="fig-frame"><img src="../images/static-suspension/v0-square.jpg" alt="CAD render of the version 0 clamping assembly suspended inside a square media bottle"></div>
+      </div>
+      <div class="fig-row-text">
+        <p class="fig-cap"><strong>Version 0: 6 parts in total (excluding nuts and bolts)</strong></p>
+        <p>The 5&times;2-mm sides of the small square sample sits between the two bottom clamps, which are adjustable until you fasten them with M3 nuts.</p>
       </div>
     </div>
+
+    <div class="fig-row">
+      <div class="fig-row-imgs">
+        <div class="fig-frame"><img src="../images/static-suspension/v1-square.jpg" alt="CAD render of the version 1 four-part assembly inside a square media bottle"></div>
+        <div class="fig-frame"><img src="../images/static-suspension/v1-round.jpg" alt="CAD render of the version 1 four-part assembly inside a round bottle"></div>
+      </div>
+      <div class="fig-row-text">
+        <p class="fig-cap"><strong>Version 1: 4 parts in total</strong></p>
+        <p>After 3D-printing the parts, I noticed that I could support the centerpiece that holds the two clamps with only one hook, so I redesigned the assembly to have two less parts. Additionally, I had learned from my mentors that we would need to seal the bottle top with a cap to ensure that the pH remains around 7.5&ndash;8 while in the incubator. So I planned to attach the assembly to the cap by adhesive, which they confirmed was okay.</p>
+      </div>
+    </div>
+
+    <div class="fig-split">
+      <div class="fig-media">
+        <div class="fig-frame"><img src="../images/static-suspension/bolt-bending.jpg" alt="Gloved hand holding a media bottle with the printed clamping assembly installed"></div>
+      </div>
+      <div class="fig-text">
+        <p>Here's where I ran into my first challenge. When I installed a test sample into the clamps, and pressed the bottom clamp into the sample to ensure a tight fit, the M3 bolt that holds the clamps bends sharply. This is a result of the bolt being plastic, as metal bolts will corrode in the fluid.</p>
+      </div>
+    </div>
+
+    <div class="fig-split is-flipped">
+      <div class="fig-media">
+        <div class="fig-frame"><img src="../images/static-suspension/v15-snapfit.jpg" alt="CAD render of the version 1.5 assembly with snap-fit steps on the clamp"></div>
+      </div>
+      <div class="fig-text">
+        <p>Initially, in order to combat this, I researched snap-fit clamping mechanisms. While the snap fit does add the needed structural support to reduce bending, it removes the original adjustable feature of the clamper. This is vital since every sample we machined and polished varied in thickness by about 0.1&nbsp;mm, a substantial amount at this scale.</p>
+        <p class="fig-cap"><strong>Version 1.5: With snap-fit steps so clamping can be tighter</strong></p>
+      </div>
+    </div>
+
+    <div class="fig-split">
+      <div class="fig-media">
+        <div class="fig-frame"><img src="../images/static-suspension/final-version.jpg" alt="CAD render of the two-part final clamp design with a sliding slot"></div>
+      </div>
+      <div class="fig-text">
+        <p>This altogether led me to think, how can I both maintain the adjustability feature while also promoting greater structural stiffness in the region where the square is clamped. I realized that I could reduce the design to two parts, having the bottom and top clamps extend to the cap itself, where the bottom clamp locks in to the top clamp from the top and cannot be removed otherwise. Then, inserting a bolt through a slot coincident in the top and bottom clamps, you can slide the bottom clamp up and down and lock the fixture with a nut with an outer radius larger than the slot.</p>
+        <p class="fig-cap"><strong>Final Version</strong></p>
+      </div>
+    </div>
+
+    <div class="fig-split is-flipped">
+      <div class="fig-media">
+        <div class="fig-frame"><img src="../images/static-suspension/final-final.jpg" alt="CAD render of the final assembly with a second slot added to prevent warping"></div>
+      </div>
+      <div class="fig-text">
+        <p>While this proved even more promising, the assembly still faced warping in the bottom region where the square samples are clamped. I made two final changes: increasing the infill density of the PLA 3D print from 20% to 70% and adding a second slot so that there is little to no bend in the clamping area.</p>
+        <p class="fig-cap"><strong>Final Final Version</strong> &mdash; ensuring there is no warping at the back/bottom clamp</p>
+      </div>
+    </div>
+
+    <div class="fig-row">
+      <div class="fig-row-imgs">
+        <div class="fig-frame"><img src="../images/static-suspension/incubator-a.jpg" alt="Bottles with clamped samples suspended in corrosion fluid inside the incubator"></div>
+        <div class="fig-frame"><img src="../images/static-suspension/incubator-b.jpg" alt="Close view of labelled bottles holding suspended samples in the incubator"></div>
+      </div>
+      <div class="fig-row-text">
+        <p>From here onwards, I had utilized this design for every machined sample. After almost 30 submersions, <strong>not one square had fallen out of the clamping assembly during the 55 hours of corrosion!</strong> Note that multiple iterations of the experiment had been carried out due to the measured pH after corrosion rising above 8.0, causing us to adjust CO&#8322; levels and open/closed bottles.</p>
+      </div>
+    </div>
+
   </div>
 </main>
 
