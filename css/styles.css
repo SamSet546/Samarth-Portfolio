@@ -655,3 +655,120 @@ a { color: var(--blue-deep); }
   .fig-row-imgs { grid-template-columns: 1fr; }
   .fig-frame img { max-height: 340px; }
 }
+
+/* ---------------------------------------------------------------
+   Workflow chain graphic
+   --------------------------------------------------------------- */
+.workflow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 10px;
+  max-width: 940px;
+  margin: 36px auto 14px;
+}
+
+.wf-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: var(--radius);
+  padding: 11px 16px;
+  min-height: 46px;
+}
+
+.wf-num {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--navy);
+  background: var(--blue-light);
+  border-radius: 3px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.wf-label {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 12.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  line-height: 1.25;
+}
+
+.wf-arrow {
+  display: flex;
+  align-items: center;
+  color: var(--blue);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.wf-step.is-terminal { background: var(--blue); }
+.wf-step.is-terminal .wf-num { background: var(--navy); color: var(--white); }
+
+/* ---------------------------------------------------------------
+   Figure grouping: pack two per row, centre any remainder
+   --------------------------------------------------------------- */
+.fig-block { margin: 46px 0; }
+
+.fig-grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+.fig-grid2 + .fig-grid2 { margin-top: 20px; }
+
+.fig-solo {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* odd image out, sized to match one column of the pair above it */
+.fig-remainder {
+  max-width: calc(50% - 10px);
+  margin: 20px auto 0;
+}
+
+.fig-cell { margin: 0; }
+.fig-cell .fig-cap { margin-top: 10px; }
+
+.fig-grid2 .fig-frame img,
+.fig-remainder .fig-frame img { max-height: 400px; }
+
+/* Two images joined by an arrow ----------------------------------- */
+.fig-arrow-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+}
+.fig-arrow-mark {
+  font-size: 34px;
+  line-height: 1;
+  color: var(--blue);
+  font-weight: 700;
+  text-align: center;
+}
+.fig-arrow-row .fig-frame img { max-height: 380px; }
+
+@media (max-width: 700px) {
+  .fig-grid2 { grid-template-columns: 1fr; }
+  .fig-remainder { max-width: 100%; }
+  .fig-arrow-row { grid-template-columns: 1fr; }
+  .fig-arrow-mark { transform: rotate(90deg); font-size: 28px; }
+  .workflow { gap: 8px; }
+  .wf-label { font-size: 11.5px; }
+}

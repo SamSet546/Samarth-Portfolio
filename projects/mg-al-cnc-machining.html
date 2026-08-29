@@ -28,18 +28,166 @@
 <main class="detail">
   <div class="wrap">
     <a class="back-link" href="../index.html#projects">&larr; All projects</a>
-    <p class="detail-org">Weihs Lab: Hopkins Extreme Materials</p>
+    <p class="detail-org">Weihs Lab: Hopkins Extreme Materials Institute</p>
     <h1 class="detail-title">CNC Machining and Surface Treatment of Mg-Al</h1>
-    <div class="detail-hero">
-      <img src="../images/Clamping_Mess.jpg" alt="Workpiece clamped in a CNC machining fixture">
+
+    <div class="prose">
+      <p>The process of going from a single raw company-supplied Magnesium rod or piece to a fully test-ready sample for 3-point bending can take up to two weeks. As part of the Weihs lab, I often focused on maximizing the output of machining efforts and working continuously after experiments to finish surface treatments immediately. This sped up the total project completion by several weeks in those three months.</p>
     </div>
 
-    <div class="detail-body">
-      <div class="empty-state">
-        <strong>Write-up in progress</strong>
-        This page is ready for the project description &mdash; background, approach, results, and any additional figures.
+    <div class="workflow" role="img" aria-label="Sample preparation workflow: heat treatment, CNC wire EDM machining, 1200-grit polishing, lacquering, micro-CT scan, then corrosion-fatigue testing by 3-point bend.">
+      <div class="wf-step"><span class="wf-num">1</span><span class="wf-label">Heat<br>Treatment</span></div>
+      <div class="wf-arrow">&#8594;</div>
+      <div class="wf-step"><span class="wf-num">2</span><span class="wf-label">CNC Wire EDM<br>Machining</span></div>
+      <div class="wf-arrow">&#8594;</div>
+      <div class="wf-step"><span class="wf-num">3</span><span class="wf-label">1200-Grit<br>Polishing</span></div>
+      <div class="wf-arrow">&#8594;</div>
+      <div class="wf-step"><span class="wf-num">4</span><span class="wf-label">Lacquering</span></div>
+      <div class="wf-arrow">&#8594;</div>
+      <div class="wf-step"><span class="wf-num">5</span><span class="wf-label">Micro-CT<br>Scan</span></div>
+      <div class="wf-arrow">&#8594;</div>
+      <div class="wf-step is-terminal"><span class="wf-num">6</span><span class="wf-label">Corrosion-Fatigue<br>Testing (3-Point Bend)</span></div>
+    </div>
+    <p class="fig-cap">Every sample passes through all six stages; the first four are the ones I ran.</p>
+
+    <div class="prose">
+      <p>First, we heat treat supplied Magnesium rods in order to observe the effect of changes in microstructure (e.g. material grain sizes) on corrosion-fatigue properties like tensile strength.</p>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <div class="fig-frame"><img src="../images/cnc-machining/microstructure.jpg" alt="Four micrographs showing different Magnesium grain structures after heat treatment"></div>
+    </div>
+
+    <div class="prose">
+      <p>For very hot heat treatments of 450&nbsp;C, we utilized an argon furnace that purges out oxygen from the heat chamber and processes in inert argon gas. Since Magnesium is highly reactive, we want to reduce oxidation from the presence of oxygen, as it can create increased pitting (crack) initiation locations within the rod.</p>
+    </div>
+
+    <div class="fig-block">
+      <div class="fig-grid2">
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/cnc-machining/argon-furnace.jpg" alt="Argon furnace units used for high-temperature heat treatments"></div>
+        </figure>
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/cnc-machining/furnace-panel.jpg" alt="Furnace controller display showing setpoint and process temperature"></div>
+        </figure>
       </div>
     </div>
+
+    <div class="prose">
+      <p>I program the argon furnace to purge out oxygen air for around 30 minutes until the oxygen content is under 5% in the chamber. At the same time, I process in argon air and ramp up the temperature to 450&nbsp;C. We frequently conduct 450&nbsp;C heat treatments for 24 hours, so I undo purge and keep processing on at 450&nbsp;C for a timer of 24 hours.</p>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <div class="fig-frame"><img src="../images/cnc-machining/recipe-diagram.jpg" alt="Recipe diagram plotting furnace temperature against time, holding at 450 C for 24 hours before sample removal"></div>
+    </div>
+
+    <div class="prose">
+      <p>Immediately when the timer finishes, I take the sample out, quench it in cold water for 30 seconds, and bag it. The furnace runs a cooldown program. It is now ready for Wire EDM sample machining.</p>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <figure class="fig-cell">
+        <div class="fig-frame"><img src="../images/cnc-machining/rod-quenched.jpg" alt="Gloved hand holding a Magnesium rod immediately after quenching"></div>
+        <figcaption class="fig-cap">Magnesium rod after quenching</figcaption>
+      </figure>
+    </div>
+
+    <div class="prose">
+      <p>Then, I operate a CNC Wire EDM machine to cut around six ~1.2-mm thick, ~50-mm long samples with steps from the clamped, heat-treated rod. I first normalize the axes of the clamped part since the part may be tilted at an angle, specify material and material thickness, add in programmed g-code, set my origin for the cutter to start from, and start the machine. I account for the extra thickness the wire cuts when discharging current (known as cutter compensation).</p>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <figure class="fig-cell">
+        <div class="fig-frame"><img src="../images/cnc-machining/clamped-rod.jpg" alt="Heat-treated rod clamped in the wire EDM machine with a custom fixture"></div>
+        <figcaption class="fig-cap">Clamped rod &mdash; the clamping setup is more complex than usual here since the rod was barely the length of the sample that needed to be cut</figcaption>
+      </figure>
+    </div>
+
+    <div class="prose">
+      <p>As you can see above, I can sometimes only clamp about 2&ndash;3&nbsp;mm of the rod if it is machined poorly and is only a few millimeters longer than the length of the sample I need to cut. I improvise where I need to. I always need to avoid the bottom cutting cone or top box head that contains the wire from touching the clamping assembly or going out of bounds, so the rod always needs to extend about 10&nbsp;mm from the boundaries.</p>
+      <p>The machined sample looks like the following. Each sample has steps so that we can adequately observe tension at the bottom face of the sample and compression on the top face of the sample during 3-point bend.</p>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <div class="fig-frame"><img src="../images/cnc-machining/machined-sample.jpg" alt="Hand holding a thin machined Magnesium sheet sample with stepped edges"></div>
+    </div>
+
+    <div class="prose">
+      <p>Often, I need to write new g-code and innovate new clamping setups for other sample types. For the 5&times;5&times;2&nbsp;mm squares I mention in my previous project, I actually machine them from rods that have about 10&ndash;12&nbsp;mm leftover after cutting the long sheet samples. In these cases I have significantly less clamping thickness, and you can see that very often I have to cut precisely to the clamping edge. Additionally, I have to first cut out 5&nbsp;mm by 5&nbsp;mm from the leftover piece, then run another cut to reduce the thickness of the piece to 2&nbsp;mm.</p>
+    </div>
+
+    <div class="fig-block">
+      <div class="fig-grid2">
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/cnc-machining/wire-entry-marked.jpg" alt="Rod stock marked in red to show which surfaces the wire must not enter from"></div>
+          <figcaption class="fig-cap">Red signifies where the wire should NOT enter from, since the microstructure varies on those surfaces</figcaption>
+        </figure>
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/cnc-machining/squares-cutting.jpg" alt="Leftover rod piece clamped in the wire EDM after the square samples were cut"></div>
+          <figcaption class="fig-cap">After cutting 5&times;5&times;2&nbsp;mm squares</figcaption>
+        </figure>
+      </div>
+      <div class="fig-remainder">
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/cnc-machining/squares-cut.jpg" alt="Bagged and labelled Magnesium square samples after cutting"></div>
+          <figcaption class="fig-cap">The cut squares</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>In other cases, the g-code can be even more advanced and, like the squares, has to be split into two different programs. Here, I need to cut rectangular blocks from a large cylindrical piece. This means I need to cut out two of the dimensions from the center of the cylinder and cut out the excess so that I have a smaller cylinder, all in the same program. In the second program, I clamp the cut piece and cut the thickness down, similar to the squares.</p>
+    </div>
+
+    <div class="fig-block">
+      <div class="fig-arrow-row">
+        <div class="fig-frame"><img src="../images/cnc-machining/cylinder-stock.jpg" alt="Bagged and labelled cylindrical Magnesium stock before machining"></div>
+        <div class="fig-arrow-mark" aria-hidden="true">&#8594;</div>
+        <div class="fig-frame"><img src="../images/cnc-machining/rect-block.jpg" alt="Hand holding the rectangular block machined out of the cylindrical stock"></div>
+      </div>
+      <p class="fig-cap">Cylindrical stock in, rectangular block out &mdash; two programs, two clampings.</p>
+    </div>
+
+    <div class="prose">
+      <p>Finally, another researcher in our lab polishes the sheet samples to remove the Wire EDM markings, any burrs, and most importantly any scratches (crack initiation points). After verifying there are no scratches in the polished sample, I begin measuring the sample with a micrometer and logging the dimensions in a lab notebook. From there, I place the sample in the 3-point bend chamber and mark lines precisely where the ceramic grips are. I will be using a brush to apply lacquer on these lines to create a thin layer, since cracks can propagate from the areas where the sheet is in contact with the grips during bending. The lacquer must be large enough to rest on the grips, but no larger.</p>
+      <p>The lacquering process is very specific. I must first place the sheet sample(s) on a 3D-printed tray on top of a hotplate set to 40&nbsp;C. I then apply a downward stroke on the sample(s) on all 3 marked lines. I wait 15 minutes for that stroke to dry, after which I flip the sample(s) in their respective tray and apply another stroke, ensuring that the lacquer doesn't build up at the same point. I wait another 15 minutes, flip, apply the final stroke, and collect the sample(s) after 15 minutes. I place the samples in open tubes inside a vacuum desiccator.</p>
+    </div>
+
+    <div class="fig-block">
+      <div class="fig-grid2">
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/cnc-machining/lacquer-during-a.jpg" alt="Sheet samples held in a 3D-printed tray on a hotplate during lacquering"></div>
+          <figcaption class="fig-cap">During lacquering</figcaption>
+        </figure>
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/cnc-machining/lacquer-during-b.jpg" alt="Closer view of the samples in their trays partway through the lacquering strokes"></div>
+          <figcaption class="fig-cap">During lacquering</figcaption>
+        </figure>
+      </div>
+      <div class="fig-grid2">
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/cnc-machining/lacquer-after-a.jpg" alt="Finished sample showing the lacquer band across the grip line"></div>
+          <figcaption class="fig-cap">After lacquering</figcaption>
+        </figure>
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/cnc-machining/lacquer-after-b.jpg" alt="Second finished sample with an even lacquer layer at the contact line"></div>
+          <figcaption class="fig-cap">After lacquering</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>Because the lacquer takes about 24 hours to fully set, I often have to perform the lacquering a day in advance of my PhD mentor taking the sample to micro-CT. This is a 2-hour long process that I usually do after a day's work in order for my PhD mentor to scan the sample for crack-forming sites and start testing the sample on the next day itself.</p>
+      <p>All these steps are logged into a sample tracker, with comments about when the sample was lacquered and if there are any deformities. After lacquering and micro-CT, the test occurs immediately, which is why my final job is often the limiting step. The faster I perform it, the faster we finish our research.</p>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <figure class="fig-cell">
+        <div class="fig-frame"><img src="../images/cnc-machining/three-point-bend.jpg" alt="Sample mounted in the 3-point bend corrosion-fatigue rig with pH and temperature monitoring"></div>
+        <figcaption class="fig-cap">The final step before post-processing: sample in 3-point bend corrosion-fatigue testing, with pH/temperature monitor and CO&#8322; gas flow to maintain pH of 7.4&ndash;7.5</figcaption>
+      </figure>
+    </div>
+
   </div>
 </main>
 
