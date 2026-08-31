@@ -833,3 +833,13 @@ a { color: var(--blue-deep); }
   .fig-video video { max-height: 360px; }
   .fig-video.is-portrait video { max-height: 420px; }
 }
+
+/* ---------------------------------------------------------------
+   Verdict graphic (option A vs option B)
+   --------------------------------------------------------------- */
+.verdict { margin: 40px auto; max-width: 660px; }
+.verdict svg { width: 100%; height: auto; display: block; }
+
+/* wide screenshots need the extra room to stay legible */
+.fig-frame.is-wide img { max-height: 520px; }
+.fig-grid2 .fig-frame.is-wide img { max-height: 440px; }

@@ -30,16 +30,129 @@
     <a class="back-link" href="../index.html#projects">&larr; All projects</a>
     <p class="detail-org">Design Build Fly</p>
     <h1 class="detail-title">Finite Element Analysis and Optimization of Fuselage Structure</h1>
-    <div class="detail-hero">
-      <img src="../images/Circular_Tube_FE.png" alt="ANSYS inverse reserve factor contour plot of a circular tube structure">
+
+    <div class="prose">
+      <p>Before we manufactured the full fuselage for our competition plane, the chief engineer of our Design Build Fly team asked a critical question, &ldquo;Would a square or circular cross-section of the fuselage be less likely to fail when twisted under wind?&rdquo; <strong>This significantly impacted our carbon fiber layup process:</strong> a fuselage with a square cross-section would have a much simpler mold than could be milled, whereas a circular fuselage would require a tube that makes the layup more complex.</p>
+      <p>The assumption was that a square fuselage would be far less safe as circular cross-sections generally handle torsional moments better. <strong>Since this year was our first time experimenting with carbon fiber,</strong> we wanted to see if we could maximize ease of manufacturing without putting our plane at a mechanical disadvantage. <strong>We also had already spent several weeks designing the plane with a square fuselage.</strong></p>
     </div>
 
-    <div class="detail-body">
-      <div class="empty-state">
-        <strong>Write-up in progress</strong>
-        This page is ready for the project description &mdash; background, approach, results, and any additional figures.
+    <div class="fig-block fig-solo">
+      <div class="fig-frame"><img src="../images/fuselage-fea/design-sketch.jpg" alt="Whiteboard sketch of the competition aircraft laid out with a square fuselage"></div>
+    </div>
+
+    <figure class="verdict">
+      <svg viewBox="0 0 660 250" xmlns="http://www.w3.org/2000/svg" role="img"
+           aria-label="Square cross-section marked with a check and circular cross-section marked with an X, compared on manufacturability.">
+        <!-- square option -->
+        <rect x="8" y="8" width="308" height="182" rx="5" fill="#EDF2FE" stroke="#C9D6FA"/>
+        <rect x="117" y="48" width="90" height="90" fill="#FFFFFF" stroke="#4F6BE0" stroke-width="3"/>
+        <circle cx="243" cy="63" r="18" fill="#2F9E63"/>
+        <path d="M234 63 l6 7 12 -14" fill="none" stroke="#FFFFFF" stroke-width="3.4"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="162" y="170" text-anchor="middle" fill="#070B22"
+              font-family="Archivo, sans-serif" font-size="14" font-weight="700" letter-spacing="1.4">SQUARE</text>
+
+        <!-- circular option -->
+        <rect x="344" y="8" width="308" height="182" rx="5" fill="#EDF2FE" stroke="#C9D6FA"/>
+        <circle cx="498" cy="93" r="46" fill="#FFFFFF" stroke="#4F6BE0" stroke-width="3"/>
+        <circle cx="579" cy="63" r="18" fill="#C4453A"/>
+        <path d="M572 56 l14 14 M586 56 l-14 14" fill="none" stroke="#FFFFFF" stroke-width="3.4"
+              stroke-linecap="round"/>
+        <text x="498" y="170" text-anchor="middle" fill="#070B22"
+              font-family="Archivo, sans-serif" font-size="14" font-weight="700" letter-spacing="1.4">CIRCULAR</text>
+
+        <text x="330" y="226" text-anchor="middle" fill="#4F6BE0"
+              font-family="Archivo, sans-serif" font-size="13" font-weight="600" letter-spacing="3.4">MANUFACTURABILITY</text>
+      </svg>
+    </figure>
+
+    <div class="prose">
+      <p>Our chief engineer had performed the torsional calculations, but there was still enough doubt that I proposed to simulate these cross-sections in Ansys Mechanical. While I had utilized Fusion 360 FEA software for materials like steel, I had never applied it to anisotropic composite materials where the direction of fibers matters. After some research, I discovered Ansys Composite PrepPost.</p>
+      <p>I defined the work process Ansys must execute to get from defining the composite part to performing a static structural test.</p>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <div class="fig-frame is-wide"><img src="../images/fuselage-fea/ansys-workflow.jpg" alt="Ansys Workbench project schematic linking ACP (Pre) into a Static Structural analysis"></div>
+    </div>
+
+    <div class="prose">
+      <p>For &ldquo;Engineering Data,&rdquo; I verified with the chief engineer what type of carbon fiber to use and which properties, mainly density. The material is Epoxy Carbon Unidirectional (UD) since I later define each direction independently.</p>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <div class="fig-frame is-wide"><img src="../images/fuselage-fea/engineering-data.jpg" alt="Ansys Engineering Data window with the Epoxy Carbon UD material properties defined"></div>
+    </div>
+
+    <div class="prose">
+      <p>For &ldquo;Geometry&rdquo;, I designed a tube shell in CAD for both the square and circular cross-sections, extruding the length of our proposed fuselage design. Shells are used since the thickness of the carbon fiber is very small compared to the other dimensions. I imported this geometry into a model, where I was able to assign the material (Epoxy Carbon UD) to the geometry. I created a face mesh on the shell surfaces, setting a conservative mesh element size of 0.394&nbsp;in/0.01&nbsp;m (roughly 5000&ndash;6000 nodes) for both geometries.</p>
+    </div>
+
+    <div class="fig-block">
+      <div class="fig-grid2">
+        <figure class="fig-cell">
+          <div class="fig-frame is-wide"><img src="../images/fuselage-fea/geometry-circular.jpg" alt="Meshed circular tube shell geometry in Ansys"></div>
+          <figcaption class="fig-cap">Circular cross-section</figcaption>
+        </figure>
+        <figure class="fig-cell">
+          <div class="fig-frame is-wide"><img src="../images/fuselage-fea/geometry-square.jpg" alt="Meshed square tube shell geometry in Ansys"></div>
+          <figcaption class="fig-cap">Square cross-section</figcaption>
+        </figure>
       </div>
     </div>
+
+    <div class="prose">
+      <p>For ACP &ldquo;Setup&rdquo;, I was able to assign the material, which automatically inputs the relative thickness of a single laminate. There are 6 laminates, so this thickness is multiplied by 6. Most importantly, I define the directions of each laminate. The chief engineer informed us that we would be using layers of 0/90, -45/45, 0/90 woven carbon fiber, based on his experience in an internship. I entered those values in and set up a &ldquo;Rosette&rdquo; to attach those directions to an origin on the geometries.</p>
+    </div>
+
+    <div class="fig-block">
+      <div class="fig-grid2">
+        <figure class="fig-cell">
+          <div class="fig-frame is-wide"><img src="../images/fuselage-fea/acp-fabric.jpg" alt="ACP fabric definition dialog assigning the Epoxy Carbon UD material and ply thickness"></div>
+        </figure>
+        <figure class="fig-cell">
+          <div class="fig-frame is-wide"><img src="../images/fuselage-fea/acp-stackup.jpg" alt="ACP stackup properties listing the six laminate orientations"></div>
+        </figure>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>Now, I transferred the ACP &ldquo;Setup&rdquo; to &ldquo;Model&rdquo; in the Static Structural section. Here, I established the load and boundary conditions of the simulation. The loading condition was clear as per my chief engineer's original question: a torsional load about the center of the fuselage. At the same time, he clarified that both trailing edges of the fuselage would be fixed during this test. In fact, after manufacturing, we did another physical test twisting the fuselage ourselves. I set a torsional load pressure of about 294&nbsp;N&middot;m across the length of the tube (1.473&nbsp;m), or about 200&nbsp;N (45 pounds-force), to emulate intense wind conditions.</p>
+    </div>
+
+    <div class="fig-block">
+      <div class="fig-grid2">
+        <figure class="fig-cell">
+          <div class="fig-frame is-wide"><img src="../images/fuselage-fea/load-circular.jpg" alt="Circular tube model with the torsional moment applied and both trailing edges fixed"></div>
+          <figcaption class="fig-cap">Circular cross-section</figcaption>
+        </figure>
+        <figure class="fig-cell">
+          <div class="fig-frame is-wide"><img src="../images/fuselage-fea/load-square.jpg" alt="Square tube model with the torsional moment applied and both trailing edges fixed"></div>
+          <figcaption class="fig-cap">Square cross-section</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>While equivalent/von Mises stress and deformation can be helpful, the Inverse Reserve Factor is an equivalent &ldquo;Safety Factor&rdquo; for composite materials, so it is more descriptive in this case. Any Inverse Reserve Factor greater than 1 indicates failure of the material.</p>
+    </div>
+
+    <div class="fig-block">
+      <div class="fig-grid2">
+        <figure class="fig-cell">
+          <div class="fig-frame is-wide"><img src="../images/fuselage-fea/irf-square.jpg" alt="Inverse Reserve Factor contour plot for the square cross-section, maximum 0.031268"></div>
+          <figcaption class="fig-cap">Square cross-section &mdash; max IRF 0.031268</figcaption>
+        </figure>
+        <figure class="fig-cell">
+          <div class="fig-frame is-wide"><img src="../images/fuselage-fea/irf-circular.jpg" alt="Inverse Reserve Factor contour plot for the circular cross-section, maximum 0.031015"></div>
+          <figcaption class="fig-cap">Circular cross-section &mdash; max IRF 0.031015</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>Notice that the max inverse reserve factor is 0.031015 for the circular cross-section and 0.031268 for the square cross-section. It's understandable why the square cross-section is more likely to fail since there are forces perpendicular to the fibers, while for the circular cross-section forces mostly align with the direction of the fibers. The most important finding from this simulation is that the inverse factors vary by only 0.000253. <strong>This shows that redesigning the fuselage to a less manufacturable circular cross-section design for the fuselage is not mechanically necessary.</strong></p>
+    </div>
+
   </div>
 </main>
 
