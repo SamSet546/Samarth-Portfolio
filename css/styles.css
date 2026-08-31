@@ -772,3 +772,64 @@ a { color: var(--blue-deep); }
   .workflow { gap: 8px; }
   .wf-label { font-size: 11.5px; }
 }
+
+/* ---------------------------------------------------------------
+   Video figures
+   --------------------------------------------------------------- */
+.fig-video {
+  background: var(--tint);
+  border: 1px solid var(--tint-line);
+  border-radius: var(--radius);
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+}
+.fig-video video {
+  width: auto;
+  max-width: 100%;
+  max-height: 460px;
+  border-radius: 2px;
+  background: var(--navy);
+  display: block;
+}
+
+.video-label {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue);
+  text-align: center;
+  margin: 0 0 10px;
+}
+
+/* portrait clips shouldn't tower over the text column */
+.fig-video.is-portrait video { max-height: 520px; }
+
+/* Version label chip -------------------------------------------- */
+.version-tag {
+  display: inline-block;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  background: var(--blue);
+  color: var(--white);
+  padding: 7px 14px;
+  border-radius: var(--radius);
+  margin: 0 0 16px;
+}
+.version-tag .vt-note {
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  opacity: 0.88;
+}
+.version-tag.is-final { background: var(--navy); }
+
+@media (max-width: 620px) {
+  .fig-video video { max-height: 360px; }
+  .fig-video.is-portrait video { max-height: 420px; }
+}

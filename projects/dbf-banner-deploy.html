@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Banner Deploy and Release for 2025-26 AIAA Competition | Samarth Sethi</title>
+<title>Banner Deploy and Release for 2025-26 AIAA Design Build Fly | Samarth Sethi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -29,17 +29,203 @@
   <div class="wrap">
     <a class="back-link" href="../index.html#projects">&larr; All projects</a>
     <p class="detail-org">Design Build Fly</p>
-    <h1 class="detail-title">Banner Deploy and Release for 2025-26 AIAA Competition</h1>
-    <div class="detail-hero">
-      <img src="../images/Banner_Flying_Closeup.png" alt="RC aircraft in flight towing a deployed banner">
+    <h1 class="detail-title">Banner Deploy and Release for 2025-26 AIAA Design Build Fly Competition</h1>
+
+    <div class="prose">
+      <p>Every year, the Design Build Fly competition held by the American Institute of Aeronautics and Astronautics introduces a final special mission worth double points, and <strong>is the difference between placing in the Top 50 and the Top 20 of 100 teams.</strong></p>
+      <p>Aside from assisting with carbon-fiber layups, cutting the wing, and creating fuselage features, I led this year's special mission team: designing a fuselage attachment that <strong>deploys a banner from behind the plane and releases the banner to the ground.</strong> What made this project even more difficult was that due to our limited resources and small team, we couldn't afford to test our banner before the competition in case it broke our plane. <strong>It had to work on the first try.</strong></p>
+      <p>Before even thinking about the deployment attachment, I focused on the banner itself. How would we roll up the banner? What are the physics of the banner in flight? How do we prevent the banner from being caught in the tail?</p>
+      <p>Here I actually took inspiration from the design of a toilet paper/paper towel roll: rolling the banner toward the leading edge instead of around it would free the banner smoothly in flight. It's like dropping a paper towel while holding it from the first paper except wind is the gravity.</p>
     </div>
 
-    <div class="detail-body">
-      <div class="empty-state">
-        <strong>Write-up in progress</strong>
-        This page is ready for the project description &mdash; background, approach, results, and any additional figures.
+    <div class="fig-block fig-solo">
+      <p class="video-label">Roll-out test</p>
+      <div class="fig-video is-portrait">
+        <video controls playsinline preload="none" poster="../images/banner-deploy/poster-pencil-banner-falling.jpg">
+          <source src="../videos/pencil-banner-falling.mp4" type="video/mp4">
+          Your browser doesn't support embedded video.
+        </video>
+      </div>
+      <p class="fig-cap">Unrolling toward the leading edge, tested with a pencil standing in for the carbon rod.</p>
+    </div>
+
+    <div class="prose">
+      <p>After researching actual banner-flying planes used for advertisements, I noticed that the string attachment from the fuselage to the leading edge of the banner is more than the length of the fuselage itself. Also, it is always similar to a kite, a knot in the string forming a triangle with the leading edge. In addition to removing any pieces of entanglement, that was how we were going to get the banner as far from the plane as possible.</p>
+    </div>
+
+    <div class="fig-block">
+      <div class="fig-grid2">
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/banner-deploy/ref-banner-plane-a.jpg" alt="Advertisement plane towing a banner on a long string"></div>
+        </figure>
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/banner-deploy/ref-banner-plane-b.jpg" alt="Second reference photo of a banner-towing aircraft showing the string geometry"></div>
+        </figure>
+      </div>
+      <p class="fig-cap">It may be hard to see but there is a point in the string that diverges into consecutive lines going towards the banner leading edge.</p>
+    </div>
+
+    <div class="prose">
+      <p>Now, I would need to focus on the mechanical challenge of deploying and releasing the banner with as minimal electronic input and assembly parts as possible. In fact, before I devised how the banner would go from its rolled-up state to flying, I tried to make sense of how it releases from inside the fuselage. I designed a bracket with a pin controlled by a servo motor inside the fuselage, where the banner string would form a fish hook or ring around the pin to fly from and that string easily slides off when the pin shifts to the side.</p>
+    </div>
+
+    <div class="fig-block">
+      <p class="version-tag">Version 1 <span class="vt-note">&mdash; too many parts</span></p>
+      <div class="fig-grid2">
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/banner-deploy/v1-bracket.jpg" alt="CAD model of the version 1 bracket with a servo-driven pin"></div>
+        </figure>
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/banner-deploy/v1-sketch.jpg" alt="Hand sketch working out the pin and string release geometry"></div>
+        </figure>
       </div>
     </div>
+
+    <div class="prose">
+      <p>When I showed this design to the senior engineer, I was instantly met with the pin being too structurally complex. His words were clear: <strong>Always simplify as much as you can.</strong> Then, I shifted back to the first task of actually dropping the banner for it to fly. I reimagined the position of the servo motor and the pin, creating a housing for the servo, while a smaller, horizontal push rod extending from the servo arm becomes the pin. Another fixed rod holds the banner from a rubber band that wraps around and attaches at the push rod; when the rod shifts, banner falls.</p>
+    </div>
+
+    <div class="fig-block">
+      <p class="version-tag">Version 2 <span class="vt-note">&mdash; too structurally weak, high bending, introduced risk of rubber bands</span></p>
+      <div class="fig-grid2">
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/banner-deploy/v2-servo-mount.jpg" alt="CAD model of the version 2 servo housing with a horizontal push rod"></div>
+        </figure>
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/banner-deploy/v2-test-rig.jpg" alt="Bench test of the version 2 mount holding rolled ripstop nylon with a rubber band"></div>
+        </figure>
+      </div>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <p class="video-label">First drop test</p>
+      <div class="fig-video is-portrait">
+        <video controls playsinline preload="none" poster="../images/banner-deploy/poster-banner-falling-first.jpg">
+          <source src="../videos/banner-falling-first.mp4" type="video/mp4">
+          Your browser doesn't support embedded video.
+        </video>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>While the servo motor fit inside the mount as a press fit, the rubber band was too stiff and thick for the banner to fall. This material I'm testing with is ripstop nylon, known to be fray-free and heavily durable in high-speed wind conditions. However, the rubber and ripstop nylon surfaces produce significant frictional forces, preventing a smooth fall.</p>
+      <p>To reduce bending, I flipped the design so the servo motor rests horizontally, and there's a sharp chamfer at the two lugs that hold the rods. It also appeared that having an identical mount in the center of the banner means the banner string can attach at that point in the same fishing hook fashion while the other mount toward the front of the banner drops it into a rolling motion. A cup at the end supports the banner during flight but lets the banner drop at an angle when the first servo motor releases it.</p>
+    </div>
+
+    <div class="fig-block">
+      <p class="version-tag">Version 3</p>
+      <div class="fig-grid2">
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/banner-deploy/v3-mount.jpg" alt="CAD model of the version 3 mount with the servo lying horizontally"></div>
+        </figure>
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/banner-deploy/v3-rod-assembly.jpg" alt="CAD model of the full banner rod assembly with two identical mounts and an end cup"></div>
+        </figure>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>With the help of a senior member in our group, we also took feedback from a previous snap-fit design to create the snap-fit mechanism that would help attach the servo motor mount to the interior of the fuselage. We replaced rubber bands with strings. We were ready for testing.</p>
+    </div>
+
+    <div class="fig-block">
+      <p class="version-tag is-final">Final Version</p>
+      <div class="fig-grid2">
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/banner-deploy/final-snapfit.jpg" alt="CAD section view of the final mount showing the snap-fit attachment to the fuselage"></div>
+        </figure>
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/banner-deploy/final-printed.jpg" alt="The 3D-printed final servo mount with the servo installed"></div>
+        </figure>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>Most importantly, I rigorously tested the hole size in the lugs to ensure the push rod would never get stuck in between them or fail to enter the holes if they were too small. <strong>I had to redesign the holes in different geometries and sizes about five times for me to get it right.</strong></p>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <figure class="fig-cell">
+        <div class="fig-frame"><img src="../images/banner-deploy/clamp-test.jpg" alt="Banner held in a clamping setup on the bench to simulate the drop"></div>
+        <figcaption class="fig-cap">Holding banner using a clamping setup and testing to simulate the banner drop</figcaption>
+      </figure>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <p class="video-label">Drop test with the end cup</p>
+      <div class="fig-video">
+        <video controls playsinline preload="none" poster="../images/banner-deploy/poster-banner-falling-with-cup.jpg">
+          <source src="../videos/banner-falling-with-cup.mp4" type="video/mp4">
+          Your browser doesn't support embedded video.
+        </video>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>It appeared, however, that the circular cup holder was the weed in our banner assembly stack, with the banner leading edge getting stuck inside it. As long as we could hold the banner tightly during flight, we wouldn't require additional support. In order to do so, we only slightly redesigned the servo mount to have both a deploy and release section (3 lugs). The servo moves halfway to deploy, and completely out to release. This way, we could support the banner from the same positions but at two points, and still release from the center.</p>
+      <p>In the final plane, we incorporated zip ties to reduce the friction with the ripstop nylon and create a tighter fit around the banner.</p>
+    </div>
+
+    <div class="fig-block">
+      <div class="fig-grid2">
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/banner-deploy/plane-mounts.jpg" alt="The competition aircraft with both banner mounts circled beneath the wing"></div>
+        </figure>
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/banner-deploy/leading-edge.jpg" alt="Close view of the rolled banner and carbon fiber leading edge held under the plane"></div>
+        </figure>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>After several more additional tests under the plane to ensure the banner at least drops, we could confirm that the string or banner itself would never get stuck on any part of the plane. The final steps were on me to build the banner leading edge using a carbon fiber rod, which one of our members stitched the banner around, and I had also knotted the string to create a triangle that wraps through the inside of the rod. We added about five weights to the bottom of the banner such that the leading edge would stay vertical during flight and drop-out.</p>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <figure class="fig-cell">
+        <div class="fig-frame"><img src="../images/banner-deploy/team-build.jpg" alt="The team assembled around a workbench finishing and decorating the banner"></div>
+        <figcaption class="fig-cap">Our team and I finalizing the banner with some decorations.</figcaption>
+      </figure>
+    </div>
+
+    <h2 class="subhead">Ground Mission</h2>
+
+    <div class="prose">
+      <p>Please take the time to view my participation in the ground mission, where I pilot the controls to move the push rod in the correct positions for my teammate to install the banner (hooking the lead string and hooking the zipties). You'll notice at the end that the banner drops smoothly when we hold the plane vertical; I make the input on the controller.</p>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <p class="video-label">Banner installation</p>
+      <div class="fig-video">
+        <video controls playsinline preload="none" poster="../images/banner-deploy/poster-ground-mission.jpg">
+          <source src="../videos/ground-mission.mp4" type="video/mp4">
+          Your browser doesn't support embedded video.
+        </video>
+      </div>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <p class="video-label">Release, plane held vertical</p>
+      <div class="fig-video is-portrait">
+        <video controls playsinline preload="none" poster="../images/banner-deploy/poster-ground-mission-drop.jpg">
+          <source src="../videos/ground-mission-drop.mp4" type="video/mp4">
+          Your browser doesn't support embedded video.
+        </video>
+      </div>
+    </div>
+
+    <div class="fig-block">
+      <div class="fig-grid2">
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/banner-deploy/competition-a.jpg" alt="The banner fully deployed behind the aircraft during the competition flight"></div>
+        </figure>
+        <figure class="fig-cell">
+          <div class="fig-frame"><img src="../images/banner-deploy/competition-b.jpg" alt="The released banner falling away from the aircraft"></div>
+        </figure>
+      </div>
+      <p class="fig-cap">Deploy and release of banner in actual competition!</p>
+    </div>
+
   </div>
 </main>
 
