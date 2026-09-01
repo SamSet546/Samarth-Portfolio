@@ -165,11 +165,18 @@ a { color: var(--blue-deep); }
   color: var(--white);
 }
 
-.hero-sub {
-  font-size: 19px;
-  color: #B9C6EA;
-  margin: 22px auto 0;
-  max-width: 30em;
+.hero-portfolio {
+  margin: 20px 0 0;
+}
+.hero-portfolio strong {
+  display: inline-block;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(15px, 2.2vw, 20px);
+  letter-spacing: 0.42em;
+  text-indent: 0.42em;
+  text-transform: uppercase;
+  color: var(--blue-light);
 }
 
 .hero-actions {
@@ -843,3 +850,57 @@ a { color: var(--blue-deep); }
 /* wide screenshots need the extra room to stay legible */
 .fig-frame.is-wide img { max-height: 520px; }
 .fig-grid2 .fig-frame.is-wide img { max-height: 440px; }
+
+/* ---------------------------------------------------------------
+   About: headshot and numbered bio
+   --------------------------------------------------------------- */
+.about-side {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.headshot {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--tint-line);
+  display: block;
+}
+
+.about-list {
+  margin: 0 0 18px;
+  padding-left: 0;
+  list-style: none;
+  counter-reset: bio;
+  max-width: 40em;
+}
+.about-list li {
+  counter-increment: bio;
+  position: relative;
+  padding-left: 44px;
+  margin-bottom: 16px;
+}
+.about-list li::before {
+  content: counter(bio);
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--blue);
+  color: var(--white);
+  border-radius: var(--radius);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+@media (max-width: 860px) {
+  .about-side { max-width: 340px; }
+  .about-list li { padding-left: 38px; }
+}
