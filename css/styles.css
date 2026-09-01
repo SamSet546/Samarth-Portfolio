@@ -152,7 +152,7 @@ a { color: var(--blue-deep); }
 .eyebrow {
   font-family: var(--display);
   font-weight: 600;
-  font-size: 13px;
+  font-size: 17px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--blue-light);
