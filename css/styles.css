@@ -920,7 +920,7 @@ a { color: var(--blue-deep); }
   align-items: center;
   overflow: hidden;
   pointer-events: none;
-  opacity: 0.36;
+  opacity: 0.47;
   /* feather both ends so tiles arrive and leave rather than pop */
   -webkit-mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent);
           mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent);
@@ -966,7 +966,7 @@ a { color: var(--blue-deep); }
 }
 
 @media (max-width: 700px) {
-  .hero-bg { opacity: 0.29; }
+  .hero-bg { opacity: 0.38; }
   .hero-track img { height: 150px; margin-right: 12px; }
 }
 
