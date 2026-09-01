@@ -119,7 +119,7 @@
   track.appendChild(render(strip));   // copy 2, for the seamless wrap
 
   /* Longer strips need proportionally longer duration for constant speed */
-  var PX_PER_SEC = 34;
+  var PX_PER_SEC = 17;
   requestAnimationFrame(function () {
     var half = track.scrollWidth / 2;
     if (half > 0) track.style.animationDuration = (half / PX_PER_SEC) + 's';
