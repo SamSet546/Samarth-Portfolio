@@ -823,20 +823,22 @@ a { color: var(--blue-deep); }
   display: inline-block;
   font-family: var(--display);
   font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.13em;
+  font-size: 16px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   background: var(--blue);
   color: var(--white);
-  padding: 7px 14px;
+  padding: 12px 20px;
   border-radius: var(--radius);
-  margin: 0 0 16px;
+  margin: 0 0 18px;
+  line-height: 1.4;
 }
 .version-tag .vt-note {
   font-weight: 500;
-  letter-spacing: 0.06em;
+  font-size: 15px;
+  letter-spacing: 0.02em;
   text-transform: none;
-  opacity: 0.88;
+  opacity: 0.92;
 }
 .version-tag.is-final { background: var(--navy); }
 
@@ -1027,4 +1029,15 @@ a { color: var(--blue-deep); }
 
 @media (max-width: 620px) {
   .fig-zoom::after { opacity: 1; right: 12px; bottom: 12px; }
+}
+
+/* Dense UI and code captures read poorly at half width, so inside a
+   .fig-dashboard block they stack full width instead of pairing. */
+.fig-dashboard .fig-grid2 {
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+.fig-dashboard .fig-remainder {
+  max-width: 100%;
+  margin-top: 24px;
 }
