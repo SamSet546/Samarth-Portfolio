@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Analytics Dashboards for Ethnic Businesses and Team | Samarth Sethi</title>
+<title>Kamoky Team Analytics Dashboard (Live Service) | Samarth Sethi</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/styles.css?v=97e7d5ad">
+<link rel="stylesheet" href="../css/styles.css?v=6ddbb8ba">
 </head>
 <body>
 
@@ -28,18 +28,164 @@
 <main class="detail">
   <div class="wrap">
     <a class="back-link" href="../index.html#projects">&larr; All projects</a>
-    <p class="detail-org">Data Analytics with Kamoky</p>
-    <h1 class="detail-title">Analytics Dashboards for Ethnic Businesses and Team</h1>
-    <div class="detail-hero">
-      <img src="../images/MATLAB_Dashboard_Kamoky.png" alt="MATLAB analytics dashboard showing topic distribution and viewer activity charts">
+    <p class="detail-org">Kamoky: Ethnic Media</p>
+    <h1 class="detail-title">Kamoky Team Analytics Dashboard (Live Service)</h1>
+
+    <div class="prose">
+      <p>Over the summer of 2026, I worked as the lead Data &amp; Product employee for the first-ever ethnic and diaspora social media company, headquartered in Baltimore. One of my main tasks was to develop a dashboard for the CEO that enables a more descriptive outlook into what's happening on the app than the current free service the team uses (Mixpanel).</p>
+      <p>Immediately, I noticed that Mixpanel can log posts that appear on the app, <strong>but it can't classify them into categories at all.</strong> As a result, the team can't know which topics are the most popular on the app and which posts under them garner the most views.</p>
+      <p>What was most useful from Mixpanel was the database it stored regarding views on a post, the post text, duration the user stayed on the app, the date/timestamp a view was made, and info about the viewer like the general area they're from. Given my past experience structuring data with python libraries like pandas, I was able to deliver insights about the number of active users every day (filtering by unique users), weekly retention (tracking distinct users across weekly timestamps), top session times and in which cities, the peak hours of activity in the last 30 days (timestamped hour with most views), and the cities with the most active users (active user count grouped by city).</p>
     </div>
 
-    <div class="detail-body">
-      <div class="empty-state">
-        <strong>Write-up in progress</strong>
-        This page is ready for the project description &mdash; background, approach, results, and any additional figures.
+    <div class="fig-block fig-dashboard">
+      <a class="fig-zoom" href="../images/kamoky-dashboards/city-sessions.jpg" target="_blank" rel="noopener">
+        <div class="fig-frame"><img src="../images/kamoky-dashboards/city-sessions.jpg" alt="Dashboard panels showing active users by city and the longest user sessions"></div>
+      </a>
+    </div>
+
+    <div class="fig-block fig-dashboard">
+      <div class="fig-grid2">
+        <figure class="fig-cell">
+          <a class="fig-zoom" href="../images/kamoky-dashboards/activity-retention.jpg" target="_blank" rel="noopener">
+            <div class="fig-frame"><img src="../images/kamoky-dashboards/activity-retention.jpg" alt="Daily active users bar chart alongside a weekly retention cohort table"></div>
+          </a>
+        </figure>
+        <figure class="fig-cell">
+          <a class="fig-zoom" href="../images/kamoky-dashboards/usage-hour-trend.jpg" target="_blank" rel="noopener">
+            <div class="fig-frame"><img src="../images/kamoky-dashboards/usage-hour-trend.jpg" alt="Usage by hour of day chart next to a monthly view trend comparison"></div>
+          </a>
+        </figure>
       </div>
     </div>
+
+    <div class="prose">
+      <p><strong>Since the CEO needed actionable info related to sales,</strong> I needed to couple these insights with the categories each post was labeled into so they could see where the user demand was. Here's how I initially assigned each post from the database into a category:</p>
+    </div>
+
+    <p class="version-tag">V1 <span class="vt-note">&mdash; K-Means clustering for category creation (20 topics), trained HuggingFace SentenceTransformer for category assignment</span></p>
+
+    <div class="prose">
+      <p>I started with what I was familiar with: unsupervised learning using K-means. I trained a K-means model on the dataset's post slugs and plotted the inertias of every model from k=1 to k=275 (i.e. 275 clusters). I determined that the inertia didn't decrease significantly after k=20, meaning that the grouping wasn't getting much more accurate after 20 clusters. Shown are the clusters and an example post I extracted from each of them, along with the most viewed clusters.</p>
+    </div>
+
+    <div class="fig-block fig-dashboard">
+      <a class="fig-zoom" href="../images/kamoky-dashboards/kmeans-clusters.jpg" target="_blank" rel="noopener">
+        <div class="fig-frame"><img src="../images/kamoky-dashboards/kmeans-clusters.jpg" alt="Terminal output listing the twenty K-means clusters with an example post from each"></div>
+      </a>
+    </div>
+
+    <div class="prose">
+      <p>Each post slug in the dataset now carried an additional column: their assigned cluster number. I trained a SentenceTransformers model from HuggingFace on this static dataset (with almost a year of post data), predicting cluster number from post text. Then I cached this model in a folder, calling it to classify any future posts that appear after the final date on the training dataset. Each cluster number correlates to a key phrase like &ldquo;Jewelry&rdquo; to describe the category (JSON file), assumed from what posts fall under the cluster.</p>
+    </div>
+
+    <div class="fig-block fig-dashboard">
+      <div class="fig-grid2">
+        <figure class="fig-cell">
+          <a class="fig-zoom" href="../images/kamoky-dashboards/cluster-json-a.jpg" target="_blank" rel="noopener">
+            <div class="fig-frame"><img src="../images/kamoky-dashboards/cluster-json-a.jpg" alt="JSON file mapping cluster numbers to descriptive category key phrases"></div>
+          </a>
+        </figure>
+        <figure class="fig-cell">
+          <a class="fig-zoom" href="../images/kamoky-dashboards/cluster-json-b.jpg" target="_blank" rel="noopener">
+            <div class="fig-frame"><img src="../images/kamoky-dashboards/cluster-json-b.jpg" alt="Continuation of the cluster-to-category JSON mapping"></div>
+          </a>
+        </figure>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>While I could run the classification locally, I encountered a major RAM block when deploying it on a web service.</p>
+    </div>
+
+    <p class="version-tag">V2 <span class="vt-note">&mdash; K-Means clustering with ONNX runtime (lower memory) for the trained SentenceTransformer</span></p>
+
+    <div class="prose">
+      <p>It took me some time to realize that the RAM issue was less about the size of the dataset exported from Mixpanel and more about the classification model.</p>
+      <p>I learned that HuggingFace's SentenceTransformers consumes about ~2&ndash;3&nbsp;GB of RAM when pulled from the cache. For deploying a free web service, I had only about 512&nbsp;MB of RAM to work with in total. I researched and found a file conversion method called Open Neural Network Exchange (ONNX), intended to reduce the memory usage of large trained models. After ONNX conversion, I could safely deploy the classification to <strong>a live web service that refreshes the Mixpanel-exported dataset every 10 minutes.</strong></p>
+      <p>I utilized the additional cluster number for each newly classified post slug in order to group post data by city, month, and general view counts.</p>
+    </div>
+
+    <div class="fig-block fig-dashboard">
+      <div class="fig-grid2">
+        <figure class="fig-cell">
+          <a class="fig-zoom" href="../images/kamoky-dashboards/v2-feature-usage.jpg" target="_blank" rel="noopener">
+            <div class="fig-frame"><img src="../images/kamoky-dashboards/v2-feature-usage.jpg" alt="Feature usage by category chart beside a ranked list of the top clusters"></div>
+          </a>
+        </figure>
+        <figure class="fig-cell">
+          <a class="fig-zoom" href="../images/kamoky-dashboards/v2-cluster-month.jpg" target="_blank" rel="noopener">
+            <div class="fig-frame"><img src="../images/kamoky-dashboards/v2-cluster-month.jpg" alt="Cluster activity by month alongside the top cities for each category"></div>
+          </a>
+        </figure>
+      </div>
+    </div>
+
+    <p class="version-tag">V3 <span class="vt-note">&mdash; Anthropic Haiku for category creation (94 topics), SetFit classifier on ONNX runtime for category assignment</span></p>
+
+    <div class="prose">
+      <p>You likely noticed that the classification categories are quite broad. A specific post about ways to raise children to speak their mother tongue may get lost in Local Recs &amp; Requests. It seemed clear that for the variety of different posts on Kamoky, 20 clusters was not enough. Thus, it was time to abandon K-Means and switch to a more comprehensive model: an LLM.</p>
+      <p>Anthropic's Haiku model is excellent for explaining posts into a short-form category. After running it through the past 6 months of data, as I found that around 4 or 5 months in the previous year have barely any post or viewer data, I received the post text and both the category and the intent of the post (e.g. advertisement, seeking service, discussion).</p>
+    </div>
+
+    <div class="fig-block fig-dashboard">
+      <figure class="fig-cell">
+        <a class="fig-zoom" href="../images/kamoky-dashboards/haiku-labels.jpg" target="_blank" rel="noopener">
+          <div class="fig-frame"><img src="../images/kamoky-dashboards/haiku-labels.jpg" alt="Table of post slugs with the category and intent labels returned by Haiku"></div>
+        </a>
+        <figcaption class="fig-cap">canonical_label_source is the category and intent is the &ldquo;discussion&rdquo;, &ldquo;advertising_service&rdquo;, etc.</figcaption>
+      </figure>
+    </div>
+
+    <div class="prose">
+      <p>With Kamoky being a small company, I could sift through the 330 posts and check each text individually to verify the intent and label were both accurate. After doing so, I knew that for every subsequent new post on the app, I would have to run Haiku again, which can be expensive in the long run.</p>
+      <p>Instead, I trained a specific type of classifier called SetFit that works especially well with small datasets. The training dataset became the one generated by Haiku (above), with around 94 unique topics. For training on both label and intent, I ran 5-fold cross-validation to ensure the model was accurate on multiple training/testing splits.</p>
+      <p>Training took almost a day, but I came out with a model that is above 70% accuracy generally over the data. In the final analytics dashboard, I set a failsafe for this model misclassifying posts by showing through a dropdown which posts fell under the category and when. <strong>So far, I haven't seen any blatantly misclassified posts.</strong></p>
+      <p>Additionally, the open-source SetFit GitHub repository contained information on how to create an ONNX model for each SetFit classifier you create. Thus, my final two models were &ldquo;onnx_subcat&rdquo; (subcategory) and &ldquo;onnx_intent.&rdquo;</p>
+    </div>
+
+    <p class="version-tag is-final">V3.5 <span class="vt-note">&mdash; Mimalloc and Docker container</span></p>
+
+    <div class="prose">
+      <p>Unfortunately, the final version of this dashboard still exceeded 512&nbsp;MB at deployment. I researched deeper into the web and found a high-performance memory allocator developed by Microsoft called &ldquo;Mimalloc.&rdquo; This allocator could only be accessed under a Docker container, not Python3. So I ran my server file through the Docker, in which I installed &ldquo;libmimalloc3&rdquo;.</p>
+    </div>
+
+    <div class="fig-block fig-dashboard fig-solo">
+      <a class="fig-zoom" href="../images/kamoky-dashboards/docker-mimalloc.jpg" target="_blank" rel="noopener">
+        <div class="fig-frame"><img src="../images/kamoky-dashboards/docker-mimalloc.jpg" alt="Dockerfile RUN instruction installing libmimalloc3"></div>
+      </a>
+    </div>
+
+    <div class="prose">
+      <p>The final version of the dashboard now included a wider range of categories to classify each post. As you can see below, around 10 or more categories classify each new incoming post upon refresh, which makes sense given that the dashboard only refreshes on a 30-day (not 6 month) window.</p>
+    </div>
+
+    <div class="fig-block fig-dashboard">
+      <div class="fig-grid2">
+        <figure class="fig-cell">
+          <a class="fig-zoom" href="../images/kamoky-dashboards/final-feature-usage.jpg" target="_blank" rel="noopener">
+            <div class="fig-frame"><img src="../images/kamoky-dashboards/final-feature-usage.jpg" alt="Final dashboard feature usage by subcategory with example posts per subcategory"></div>
+          </a>
+        </figure>
+        <figure class="fig-cell">
+          <a class="fig-zoom" href="../images/kamoky-dashboards/final-subcategory-month.jpg" target="_blank" rel="noopener">
+            <div class="fig-frame"><img src="../images/kamoky-dashboards/final-subcategory-month.jpg" alt="Subcategory activity by month beside the top cities per subcategory"></div>
+          </a>
+        </figure>
+      </div>
+      <div class="fig-remainder">
+        <figure class="fig-cell">
+          <a class="fig-zoom" href="../images/kamoky-dashboards/business-matching.jpg" target="_blank" rel="noopener">
+            <div class="fig-frame"><img src="../images/kamoky-dashboards/business-matching.jpg" alt="Registered businesses grouped by subcategory and filtered by matching subcategory"></div>
+          </a>
+          <figcaption class="fig-cap">I additionally matched Kamoky-registered businesses with post categories that they aligned with the most, so you could see which businesses to emphasize if a category is blowing up</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>In the end, the CEO of Kamoky was extremely satisfied with the dashboard, which is live and refreshing to this day. <strong>The dashboard offers a <u>real-time</u> look into the data analysis I had also covered for our Diaspora Insights report, presented to members of U.S.-African government consultancies.</strong></p>
+    </div>
+
   </div>
 </main>
 

@@ -973,3 +973,58 @@ a { color: var(--blue-deep); }
 @media (prefers-reduced-motion: reduce) {
   .hero-track.is-running { animation: none; transform: translate3d(-25%, 0, 0); }
 }
+
+/* ---------------------------------------------------------------
+   Dashboard screenshots
+   Dense UI captures: shown full container width, and clickable so the
+   native-resolution file can be opened when the labels are too small.
+   --------------------------------------------------------------- */
+.fig-dashboard { margin: 40px 0; }
+
+.fig-dashboard .fig-frame { padding: 10px; }
+.fig-dashboard .fig-frame img {
+  width: 100%;
+  max-width: 100%;
+  max-height: none;
+  height: auto;
+}
+
+.fig-zoom {
+  display: block;
+  text-decoration: none;
+  position: relative;
+}
+.fig-zoom::after {
+  content: "Open full size \2197";
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: rgba(7, 11, 34, 0.82);
+  padding: 6px 11px;
+  border-radius: 3px;
+  opacity: 0;
+  transition: opacity .16s ease;
+}
+.fig-zoom:hover::after,
+.fig-zoom:focus-visible::after { opacity: 1; }
+
+.notice {
+  border-left: 3px solid var(--blue);
+  background: var(--tint);
+  padding: 16px 20px;
+  margin: 0 auto 22px;
+  max-width: 44em;
+  font-size: 15.5px;
+  color: var(--ink-muted);
+}
+.notice strong { color: var(--ink); }
+
+@media (max-width: 620px) {
+  .fig-zoom::after { opacity: 1; right: 12px; bottom: 12px; }
+}
