@@ -1041,3 +1041,15 @@ a { color: var(--blue-deep); }
   max-width: 100%;
   margin-top: 24px;
 }
+
+/* Light-background outline button (resume section) */
+.btn-outline {
+  color: var(--blue-deep);
+  border: 1px solid var(--tint-line);
+  background: var(--white);
+}
+.btn-outline:hover {
+  background: var(--tint);
+  border-color: var(--blue);
+  transform: translateY(-2px);
+}
