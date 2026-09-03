@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analytics for Ethnic Businesses in MATLAB | Samarth Sethi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css?v=0f1f30c5">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="wordmark" href="../index.html">SAMARTH SETHI</a>
+    <nav class="nav" aria-label="Main">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#resume">Resume</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="rule"></div>
+
+<main class="detail">
+  <div class="wrap">
+    <a class="back-link" href="../index.html#projects">&larr; All projects</a>
+    <p class="detail-org">Kamoky: Ethnic Media</p>
+    <h1 class="detail-title">Analytics for Ethnic Businesses in MATLAB</h1>
+
+    <div class="prose">
+      <p>During my time at Kamoky, the first-ever social media app for the ethnic diaspora, I sought after a project to complement a business dashboard page one of my coworkers was developing. Their business dashboard would incorporate multiple side tabs, including an advertisement tracker, a listings page, and an analytics page. Given the abundance of ethnic businesses (almost 400 in total) registered on the app, I found it critical that they see how well their posts performed in terms of viewership and relevance.</p>
+      <p>I worked with MATLAB GUI, a tool I had learned the semester before this internship. MATLAB makes creating an interactive, graphical frontend easy to develop due to its drag-and-drop features and in-code callback functions for components you name directly.</p>
+    </div>
+
+    <div class="fig-block fig-dashboard">
+      <div class="fig-grid2">
+        <figure class="fig-cell">
+          <a class="fig-zoom" href="../images/matlab-analytics/app-designer-canvas.jpg" target="_blank" rel="noopener">
+            <div class="fig-frame"><img src="../images/matlab-analytics/app-designer-canvas.jpg" alt="MATLAB App Designer canvas showing the drag-and-drop layout of the analytics app"></div>
+          </a>
+          <figcaption class="fig-cap">The no-code frontend created using MATLAB App Designer</figcaption>
+        </figure>
+        <figure class="fig-cell">
+          <a class="fig-zoom" href="../images/matlab-analytics/app-designer-objects.jpg" target="_blank" rel="noopener">
+            <div class="fig-frame"><img src="../images/matlab-analytics/app-designer-objects.jpg" alt="App Designer with the component browser listing every named app object"></div>
+          </a>
+          <figcaption class="fig-cap">Note the app objects I created on the right-hand side that I later create call-back functions for in the MATLAB code editor</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>Now, I already had a dataset of registered businesses, so I developed an accurate matching algorithm that matched business names to posts where their name appears. Due to some gaps in our database, I wasn't able to track which user made a certain post, so I had to default to a more limited option that excluded posts failing to mention any business name. This is fine as my coworkers can easily finish the business-post database matching in the future.</p>
+      <p>The list of businesses is represented by a dropdown where the user can select the business they want to learn about. The number beside the business name is the number of posts they've made on the app (that mention this name).</p>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <a class="fig-zoom" href="../images/matlab-analytics/business-dropdown.jpg" target="_blank" rel="noopener">
+        <div class="fig-frame is-wide"><img src="../images/matlab-analytics/business-dropdown.jpg" alt="Business selection dropdown listing registered businesses with their post counts"></div>
+      </a>
+    </div>
+
+    <div class="prose">
+      <p>For every business, there is a second drop down below that lists the partial text of their posts. The user of this app can select the post and immediately view the analytics associated with the post.</p>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <a class="fig-zoom" href="../images/matlab-analytics/post-dropdown.jpg" target="_blank" rel="noopener">
+        <div class="fig-frame is-wide"><img src="../images/matlab-analytics/post-dropdown.jpg" alt="Second dropdown listing the partial text of each post attributed to the selected business"></div>
+      </a>
+    </div>
+
+    <div class="prose">
+      <p>Also note that when the post text is clicked on, the full post slug is compared to a search log dataset in the backend, showing whether the post appeared in a search.</p>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <a class="fig-zoom" href="../images/matlab-analytics/search-log.jpg" target="_blank" rel="noopener">
+        <div class="fig-frame is-wide"><img src="../images/matlab-analytics/search-log.jpg" alt="App panel confirming whether the selected post category appears in the search log"></div>
+      </a>
+    </div>
+
+    <div class="prose">
+      <p>Following the business and post selection, the user can click on the respective Post Views and Listing Views buttons to see each respectively.</p>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <a class="fig-zoom" href="../images/matlab-analytics/views-buttons.jpg" target="_blank" rel="noopener">
+        <div class="fig-frame is-wide"><img src="../images/matlab-analytics/views-buttons.jpg" alt="Post Views and Listing Views buttons with their unique and total view counts"></div>
+      </a>
+    </div>
+
+    <div class="prose">
+      <p>Below these the user would see what category their post is classified as and how frequently this category appeared in the month the post was made compared to other popular categories.</p>
+      <p>Mixpanel (our team's database) mainly exports views on posts, so it is easy to determine the distribution of views in hours throughout the day. The views on the selected post are compared to the total views in the 24 hours throughout the day for the month the post was made. This tells the user whether the post was made when the app receives the most traffic.</p>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <a class="fig-zoom" href="../images/matlab-analytics/topic-distribution.jpg" target="_blank" rel="noopener">
+        <div class="fig-frame is-wide"><img src="../images/matlab-analytics/topic-distribution.jpg" alt="Topic distribution for the post's month above an hourly view distribution chart"></div>
+      </a>
+    </div>
+
+    <div class="prose">
+      <p>The third column contains a drop down to view specific behaviors of the users that viewed the business' post. Note that if the post has 6 unique views, there will be 6 options in this dropdown.</p>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <a class="fig-zoom" href="../images/matlab-analytics/viewer-dropdown.jpg" target="_blank" rel="noopener">
+        <div class="fig-frame is-wide"><img src="../images/matlab-analytics/viewer-dropdown.jpg" alt="Viewer dropdown listing each unique device that viewed the selected post"></div>
+      </a>
+    </div>
+
+    <div class="prose">
+      <p>Once a viewer is selected, data regarding how many days they've visited the app since the app's creation is pulled to show their most active months. This works within the exported user data by identifying how many unique days in a month a user viewed any post. To its side, the user can cross-reference the active months of the user with the most popular category in that month, which heavily leans toward miscellaneous community discussion.</p>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <a class="fig-zoom" href="../images/matlab-analytics/active-months.jpg" target="_blank" rel="noopener">
+        <div class="fig-frame is-wide"><img src="../images/matlab-analytics/active-months.jpg" alt="Active days per month for the selected viewer beside the top category by month"></div>
+      </a>
+    </div>
+
+    <div class="prose">
+      <p>The final set of statistics for the viewer is much more descriptive. The user can see whether the last month that the viewer was active contributed a large share of views and session time to their most active month. In turn, they see whether the business' viewers are likely to return to the app. Additional metrics like the lifetime topic views and lifetime session time on the app further support this.</p>
+      <p>Next, the user of this MATLAB app can learn about whether this business' users are most exposed to categories similar to the post itself. In the case below, the viewer looked at a catering &amp; event post, but frequently visits posts related to community discussion / opinion.</p>
+      <p>Finally, the viewer's general location is displayed, as well as the retention rate of viewers from that location month by month. This shows if the viewer is from a location with high retention, meaning viewers from that location have visited the app in a specific month, then the selected viewer is likely to return on the app for an additional post the business might make.</p>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <a class="fig-zoom" href="../images/matlab-analytics/viewer-stats.jpg" target="_blank" rel="noopener">
+        <div class="fig-frame is-wide"><img src="../images/matlab-analytics/viewer-stats.jpg" alt="Viewer retention metrics, most exposed categories, and location retention by month"></div>
+      </a>
+    </div>
+
+    <div class="prose">
+      <p>Altogether, this MATLAB app helps Kamoky businesses discover valuable insights about both their posts and their viewers. These insights promote advertisement posts better-timed and better-aligned with viewer activity and favorite topics. I made this project so both ethnic businesses gain better reach and Kamoky can promote better turnout for their registered businesses.</p>
+      <p>If you have the time, please take the time to watch the full demo video of me using this app!</p>
+    </div>
+
+    <div class="fig-block fig-solo">
+      <p class="video-label">Full app demo</p>
+      <div class="fig-video">
+        <video controls playsinline preload="none" poster="../images/matlab-analytics/poster-demo.jpg">
+          <source src="../videos/matlab-kamoky-demo.mp4" type="video/mp4">
+          Your browser doesn't support embedded video.
+        </video>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p class="copyright">&copy; 2026 Samarth Sethi</p>
+  </div>
+</footer>
+
+</body>
+</html>
