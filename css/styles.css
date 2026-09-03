@@ -365,7 +365,6 @@ a { color: var(--blue-deep); }
   background: var(--blue);
   color: var(--white);
   padding: 16px 20px;
-  margin-top: auto;
   transition: background .18s ease;
 }
 .card-label span {
@@ -1052,4 +1051,52 @@ a { color: var(--blue-deep); }
   background: var(--tint);
   border-color: var(--blue);
   transform: translateY(-2px);
+}
+
+/* ---------------------------------------------------------------
+   Card impact bullets
+   --------------------------------------------------------------- */
+.card-points {
+  background: var(--white);
+  padding: 15px 20px 17px;
+  border-top: 1px solid var(--tint-line);
+}
+.card-points ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.card-points li {
+  position: relative;
+  padding-left: 17px;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.card-points li + li { margin-top: 8px; }
+.card-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  background: var(--blue);
+}
+
+/* ---------------------------------------------------------------
+   Availability line in the contact section
+   --------------------------------------------------------------- */
+.availability {
+  display: inline-block;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(17px, 2.3vw, 21px);
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  color: var(--white);
+  margin: -14px 0 30px;
+  padding-left: 16px;
+  border-left: 4px solid var(--blue);
 }
