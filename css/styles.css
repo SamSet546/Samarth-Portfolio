@@ -867,7 +867,7 @@ a { color: var(--blue-deep); }
 
 .headshot {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 252 / 353;      /* matches the portrait crop, so nothing is cut */
   object-fit: cover;
   border-radius: var(--radius);
   border: 1px solid var(--tint-line);
